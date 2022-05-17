@@ -2,6 +2,7 @@ import React from "react";
 import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import ConcertsPage from "./components/Events/ConcertsPage";
 import Banner from "./components/Banner"
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import "./style.css";
@@ -18,8 +19,8 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/concerts" element={<ConcertsPage />} />
-          <Route path="/about" element={<About />} />
+           <Route path="/concerts" element={<ConcertsPage />} />
+          {/*<Route path="/about" element={<About />} />
           <Route path="/calendar" element={<Calendar />} /> */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

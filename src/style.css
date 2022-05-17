@@ -84,7 +84,7 @@ button:focus {
   position: relative !important;
   background: var(--section-background-color) !important;
   color: black !important;
-  height: 100vw;
+  height: fit-content;
 
 }
 .concert-list {
@@ -93,7 +93,7 @@ button:focus {
   background: var(--section-background-color) !important;
   color: black !important;
   height: fit-content;
-  padding-bottom: 150px !important;
+  padding-bottom: 10px !important;
 }
 #list-item{
   background-color: white; 
