@@ -13,13 +13,13 @@ html {
   --image-gradient: white;
 
   --imp-text-color: black;
- 
 }
-html, #app {
-  height: 100%; 
+html,
+#app {
+  height: 100%;
   background: white;
 }
-body{
+body {
   min-height: 100%;
   background: white;
 }
@@ -31,15 +31,11 @@ button:focus {
   box-shadow: none !important;
 }
 
-
-
-
 /* --------- */
 /* Home section */
 /* --------- */
 .home-header {
   padding-top: 60px !important;
-
 }
 
 .home-section {
@@ -48,7 +44,7 @@ button:focus {
   z-index: -1;
   padding-bottom: 30px !important;
   padding-top: 0px !important;
-  padding-bottom:60px;
+  padding-bottom: 60px;
   background-color: beige;
 }
 
@@ -63,7 +59,7 @@ button:focus {
 /* Calendar */
 /* --------- */
 
-.calendar-page{
+.calendar-page {
   position: relative !important;
   padding-top: 150px !important;
   padding-bottom: 55px !important;
@@ -71,7 +67,7 @@ button:focus {
   color: black !important;
   height: 100vh;
 }
-.calendar-content{
+.calendar-content {
   padding-bottom: 55px !important;
 }
 
@@ -79,13 +75,12 @@ button:focus {
 /* Concert List Page */
 /* --------- */
 
-.concert-page{
+.concert-page {
   padding: 8rem 0 2rem !important;
   position: relative !important;
   background: var(--section-background-color) !important;
   color: black !important;
   height: fit-content;
-
 }
 .concert-list {
   padding: 8rem 0 2rem !important;
@@ -95,20 +90,19 @@ button:focus {
   height: fit-content;
   padding-bottom: 10px !important;
 }
-#list-item{
-  background-color: white; 
+#list-item {
+  background-color: white;
   min-height: 10px;
   color: black;
   text-align: center;
 }
-.concert-list-content{
- height: fit-content;
- padding-bottom: 150px !important;
+.concert-list-content {
+  height: fit-content;
+  padding-bottom: 150px !important;
 }
-.list-group-item{
+.list-group-item {
   border-radius: 5px;
 }
-
 
 /* --------- */
 /* About */
@@ -124,7 +118,6 @@ button:focus {
   height: 100vh;
 }
 
-
 /* --------- */
 /*Scrollbar   */
 /* --------- */
@@ -136,29 +129,26 @@ button:focus {
 /* Track */
 ::-webkit-scrollbar-track {
   background: beige;
-  
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #303030;
- 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(156, 156, 156);
-
 }
 .searchbox {
-  margin:0 auto;
-  width:250px;
+  margin: 0 auto;
+  width: 250px;
 }
 /* --------- */
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: black!important;
+  background-color: black !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 10px 10px 10px 10px rgba(9, 5, 29, 0.171) !important;
   backdrop-filter: blur(15px) !important;
@@ -191,7 +181,7 @@ button:focus {
   opacity: 1 !important;
 }
 
-.white{
+.white {
   color: white;
 }
 
@@ -244,7 +234,7 @@ button:focus {
 
 .logo {
   height: 4rem;
-  padding: .4rem;
+  padding: 0.4rem;
   width: auto;
   margin-left: 8rem;
 }
@@ -321,7 +311,6 @@ button:focus {
   width: 100vw;
   position: Relative;
   left: 0;
-
 }
 .footer-copywright {
   text-align: center !important;
@@ -345,8 +334,7 @@ button:focus {
   font-size: 1em;
   color: beige !important;
   margin-top: 1em !important;
-  margin-bottom: 0.5em  !important;
-  
+  margin-bottom: 0.5em !important;
 }
 .footer-icons {
   margin-top: 0.5em !important;
@@ -361,7 +349,7 @@ button:focus {
   text-align: center !important;
   font-size: 1.2em !important;
   line-height: 2em !important;
-  background: beige!important;
+  background: beige !important;
   border-radius: 50% !important;
   transition: 0.5s !important;
 }
@@ -398,6 +386,5 @@ button:focus {
 }
 
 .icon-colour {
-  color: black!important;
+  color: black !important;
 }
-
