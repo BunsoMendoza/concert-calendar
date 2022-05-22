@@ -1,10 +1,12 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-
+import * as queries from '../graphql/queries';
+import { API } from 'aws-amplify';
 import Footer from "./Footer";
 
 function Calendar() {
- 
+  const allTodos = await API.graphql({ query: queries.listTodos });
+  console.log(allTodos);
 
   return (
     <div>
