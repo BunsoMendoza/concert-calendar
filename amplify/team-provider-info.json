@@ -10,6 +10,11 @@
       "StackName": "amplify-concertcalendar-dev-121038",
       "StackId": "arn:aws:cloudformation:us-west-2:626234377433:stack/amplify-concertcalendar-dev-121038/de53daf0-da02-11ec-9c3b-068efe1da0e9",
       "AmplifyAppId": "dj0nl38idaxmv"
+    },
+    "categories": {
+      "auth": {
+        "concertcalendarf5f0db48": {}
+      }
     }
   }
 }
