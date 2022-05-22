@@ -5,7 +5,6 @@ import { API } from "aws-amplify";
 function ConcertPaginatedList(props) {
   const list = props.data.concertList;
   const [currentPage, setCurrentPage] = useState(props.data.currentPage);
-  const [isAdding, setAdding] = useState(false);
 
   const numberOfPages = Math.ceil(props.data.totalEntries / 50);
 
