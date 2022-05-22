@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-//import * as mutations from '../../graphql/mutations';
-//import { API } from "aws-amplify";
+import * as mutations from '../../graphql/mutations';
+import { API } from "aws-amplify";
 function ConcertPaginatedList(props) {
   const list = props.data.concertList;
   const [currentPage, setCurrentPage] = useState(props.data.currentPage);
@@ -20,18 +20,18 @@ function ConcertPaginatedList(props) {
     }
   }
 
-  // const handleAddClick = (event, item) => {
-  //   event.preventDefault();
+  const handleAddClick = (event, item) => {
+    event.preventDefault();
 
-  //   console.log(item);
-  //   const concertDetails = {
-  //     name: item.displayName.split(" (")[0],
-  //     id: item.id
-  //
-  //   };
-  //   const addConcert = API.graphql({ query: mutations.createEventInterestedIn, variables: {input: concertDetails}, authMode: "AMAZON_COGNITO_USER_POOLS" }).then(() => alert("it worked!"));
+    console.log(item);
+    const concertDetails = {
+      name: item.displayName.split(" (")[0],
+      id: item.id
+  
+    };
+    const addConcert = API.graphql({ query: mutations.createTodo, variables: {input: concertDetails}, authMode: "AMAZON_COGNITO_USER_POOLS" }).then(() => alert("it worked!"));
 
-  // }
+  }
 
   useEffect(() => {
     props.onSetPageNumber(currentPage);
@@ -98,7 +98,7 @@ function ConcertPaginatedList(props) {
                     <Col md="2">{item.venue.displayName}</Col>
                     <Col md="2">{item.performance}</Col>
                     <Col md="1">
-                      {/* <a onClick={(e) => {handleAddClick(e, item);}} style={{color: "blue"}}>Add</a> */}
+                      <a onClick={(e) => {handleAddClick(e, item);}} style={{color: "blue"}}>Add</a>
                     </Col>
                   </Row>
                 </li>
