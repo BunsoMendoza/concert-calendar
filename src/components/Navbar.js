@@ -8,7 +8,12 @@ import { BsCalendar2Range, BsMusicNoteList } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { CgFileDocument } from "react-icons/cg";
 
-function NavBar() {
+
+import '@aws-amplify/ui-react/styles.css';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+
+
+function NavBar({signOut}) {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -18,6 +23,12 @@ function NavBar() {
     } else {
       updateNavbar(false);
     }
+  }
+
+  function onClickSignOut(){
+    updateExpanded(false);
+    signOut();
+    
   }
 
   window.addEventListener("scroll", scrollHandler);
@@ -101,7 +112,7 @@ function NavBar() {
               <Nav.Link
                 as={Link}
                 to="#"
-                onClick={() => updateExpanded(false)}
+                onClick={onClickSignOut}
               >
 
                 <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> SIGN OUT
@@ -119,4 +130,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default withAuthenticator(NavBar);
