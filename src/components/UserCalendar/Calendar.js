@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import * as queries from '../../graphql/queries';
-import { API } from 'aws-amplify';
+
 import Footer from "../Footer";
 import CalendarList from "./CalendarList";
 
