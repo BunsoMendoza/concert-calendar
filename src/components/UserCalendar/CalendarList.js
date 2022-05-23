@@ -7,15 +7,28 @@ function CalendarList() {
     const [toDoList, setToDoList] = useState([]);
 
     const getUserEvents = async () => {
-        const allTodos = await API.graphql({ query: queries.listTodos, authMode: "AMAZON_COGNITO_USER_POOLS" });
-        setToDoList(allTodos.data.items);
-        console.log(toDoList);
+        const allTodos = await API.graphql({ query: queries.listTodos, authMode: "AMAZON_COGNITO_USER_POOLS" }).then(() => setToDoList(allTodos.data.items));
+
+        
       }
     
       useEffect(() => {
-        getUserEvents();  
+        getUserEvents();
+        console.log(toDoList);    
       }, []);
 
+      if (toDoList.length == 0) {
+        return (
+          <div>
+            
+              <Container className="calendar-list-content">
+                <h1> Loading...</h1>
+              </Container>
+            
+          </div>
+        );
+      } else {
+      }
 
 }
 export default CalendarList;
