@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
 import * as mutations from '../../graphql/mutations';
 import { API } from "aws-amplify";
 function ConcertPaginatedList(props) {
@@ -9,12 +9,12 @@ function ConcertPaginatedList(props) {
   const numberOfPages = Math.ceil(props.data.totalEntries / 50);
 
   function incrementPageNumber() {
-    if (currentPage != numberOfPages) {
+    if (currentPage !== numberOfPages) {
       setCurrentPage(currentPage + 1);
     }
   }
   function decrementPageNumber() {
-    if (currentPage != 1) {
+    if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
     }
   }
