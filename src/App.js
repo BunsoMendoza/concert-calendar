@@ -1,11 +1,11 @@
 import React from "react";
 import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+
 import ConcertsPage from "./components/Events/ConcertsPage";
 import Banner from "./components/Banner";
-import About from "./components/About/About";
-import Calendar from "./components/Calendar";
+
+import Calendar from "./components/UserCalendar/Calendar";
 import {
   BrowserRouter as Router,
   Route,
@@ -23,10 +23,10 @@ function App() {
         <Navbar />
         <ScrollToTop />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
+        <Routes> 
+          <Route path="/" element={<ConcertsPage/>} />
           <Route path="/concerts" element={<ConcertsPage />} />
-          <Route path="/about" element={<About />} />
+  
           <Route path="/calendar" element={<Calendar />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
