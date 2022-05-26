@@ -23,8 +23,7 @@ function SearchHandling(props) {
   useEffect(() => {
     setisLoaded(false);
     getUpcomingEventsByClientIP();
-    console.log(myData);
-    console.log(props);
+    
   }, [pageNumber]);
   const handlePageNumberChange = (page) => {
     setPageNumber(page);
@@ -33,8 +32,7 @@ function SearchHandling(props) {
   useEffect(() => {
     setisLoaded(false);
     getUpcomingEventsByClientIP();
-    console.log(myData);
-    console.log(props);
+   
   }, [props.searchQuery, pageNumber]);
 
   const getUpcomingEventsByClientIP = async () => {
@@ -85,7 +83,7 @@ function SearchHandling(props) {
               "&page=" +
               pageNumber
           );
-          console.log(getData);
+   
         }
       } else if (props.searchType === "Venue") {
         //get venue ID by string input
@@ -105,7 +103,7 @@ function SearchHandling(props) {
               "/calendar.json?apikey=" +
               apiProp.apikey
           );
-          console.log(getData);
+        
         }
       } else if (props.searchType === "Artist") {
         //get artist ID by string input
@@ -127,7 +125,7 @@ function SearchHandling(props) {
               "/calendar.json?apikey=" +
               apiProp.apikey
           );
-          console.log(getData);
+          
         }
       }
     }

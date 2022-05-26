@@ -13,8 +13,8 @@ function Calendar() {
   return (
     <div>
       <Container fluid className="calendar-page">
-        <Container className="calendar-content">
-          <h1>Calendar</h1>
+        <Container className="concert-list">
+    
           <CalendarList />
         </Container>
       </Container>

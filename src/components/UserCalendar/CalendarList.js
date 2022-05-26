@@ -1,34 +1,78 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col} from "react-bootstrap";
-import * as queries from '../../graphql/queries';
-import { API } from 'aws-amplify';
+import { Container, Row, Col } from "react-bootstrap";
+import * as queries from "../../graphql/queries";
+import * as mutations from "../../graphql/mutations";
+import { API } from "aws-amplify";
+import axios from "axios";
+import CalendarTable from "./CalendarTable";
+
 function CalendarList() {
+  const [toDoList, setToDoList] = useState([]);
+  var concertData;
+  var concertDataArray = [];
+  var eventData;
 
-    const [toDoList, setToDoList] = useState([]);
+  const getUserEventIDs = async () => {
+    concertData = await API.graphql({
+      query: queries.listTodos,
+      authMode: "AMAZON_COGNITO_USER_POOLS",
+    }).then((data) => {
+      
+      data.data.listTodos.items.forEach((item) => {
+        getUserEvents(item.id);
+      });
+    });
 
-    const getUserEvents = async () => {
-        const allTodos = await API.graphql({ query: queries.listTodos, authMode: "AMAZON_COGNITO_USER_POOLS" }).then(() => setToDoList(allTodos.data.items));
+    setToDoList(concertDataArray);
+    console.log(toDoList);
+  };
 
-        
-      }
-    
-      useEffect(() => {
-        getUserEvents();
-        console.log(toDoList);    
-      }, []);
+  const getUserEvents = async (item) => {
+    await axios
+      .get(
+        "https://api.songkick.com/api/3.0/events/" +
+          item +
+          ".json?apikey=m9qVXGhOvdZmmUQs"
+      )
+      .then((data) => {
+        eventData = data.data.resultsPage.results.event;
+        if (eventData.start.time === null) {
+          eventData.start.datetime = eventData.start.date;
+          eventData.start.time = "N/A";
+        } else {
+          //formating time
+          eventData.start.time = new Date(
+            eventData.start.datetime
+          ).toLocaleTimeString();
+          var splitTime = eventData.start.time.split(":");
+          eventData.start.time =
+            splitTime[0] +
+            ":" +
+            splitTime[1] +
+            splitTime[2].substring(2, splitTime[2].length);
+        }
+        var temp = "";
+        eventData.performance.forEach((performer) => {
+          temp += performer.displayName;
+          if (
+            eventData.performance.indexOf(performer) <
+            eventData.performance.length - 1
+          ) {
+            temp += ", ";
+          }
+        })
+        eventData.performance = temp;
 
-      if (toDoList.length == 0) {
-        return (
-          <div>
-            
-              <Container className="calendar-list-content">
-                <h1> Loading...</h1>
-              </Container>
-            
-          </div>
-        );
-      } else {
-      }
+        concertDataArray.push(eventData);
+      });
+  };
+  useEffect(() => {
+    getUserEventIDs().catch(console.error);
+  }, []);
+  
 
+ 
+    return (<CalendarTable data={toDoList} />);
+  
 }
 export default CalendarList;

@@ -22,7 +22,7 @@ function ConcertPaginatedList(props) {
   const handleAddClick = (event, item) => {
     event.preventDefault();
 
-    console.log(item);
+    
     const concertDetails = {
       name: item.displayName.split(" (")[0],
       id: item.id
@@ -36,7 +36,7 @@ function ConcertPaginatedList(props) {
     props.onSetPageNumber(currentPage);
   }, [currentPage]);
 
-  if (list.length == 0) {
+  if (list.length === 0) {
     return (
       <div>
         <Container fluid className="concert-list">
