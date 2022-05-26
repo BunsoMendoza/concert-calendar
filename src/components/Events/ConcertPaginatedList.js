@@ -36,7 +36,7 @@ function ConcertPaginatedList(props) {
     props.onSetPageNumber(currentPage);
   }, [currentPage]);
 
-  if (list.length === 0) {
+  if (list.length === 0) { 
     return (
       <div>
         <Container fluid className="concert-list">

@@ -4,12 +4,23 @@ import * as mutations from "../../graphql/mutations";
 import { API } from "aws-amplify";
 function CalendarTable(props) { 
   const [list, setToDoList] = useState([]);
-
- 
+  const [isLoaded, setisLoaded] = useState(false);
+  
 
   useEffect(() => {
-    console.log(props);
-    setToDoList(props.data);
+  
+   
+    if(props.itemCount !== 0){ 
+      setToDoList(props.data);
+     
+      //delayed this for a quick fix for async data bug
+      const timer = setTimeout(() => {
+        setisLoaded(true);
+       
+    
+      }, 1000);
+      return () => clearTimeout(timer);
+    } 
   }, [props]);
 
   const handleDeleteClick = (event, item) => {
@@ -24,10 +35,10 @@ function CalendarTable(props) {
       variables: { input: concertDetails },
       authMode: "AMAZON_COGNITO_USER_POOLS",
     }).then(() => alert("deleted!"));
-    
-  };
+     
+  }; 
  
-  if (list.length === 0) {
+  if (!isLoaded) {
     return (
       <div> 
         <Container className="concert-list-content">

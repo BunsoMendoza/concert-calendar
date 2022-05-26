@@ -8,26 +8,38 @@ import CalendarTable from "./CalendarTable";
 
 function CalendarList() {
   const [toDoList, setToDoList] = useState([]);
+  const [isLoaded, setisLoaded] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
   var concertData;
   var concertDataArray = [];
   var eventData;
-
+  useEffect(() => {
+    setisLoaded(false);
+    getUserEventIDs().catch(console.error);
+    
+  }, []);
   const getUserEventIDs = async () => {
     concertData = await API.graphql({
       query: queries.listTodos,
       authMode: "AMAZON_COGNITO_USER_POOLS",
     }).then((data) => {
-      
+      setItemCount(data.data.listTodos.items.length);
       data.data.listTodos.items.forEach((item) => {
+        
         getUserEvents(item.id);
       });
-    });
+    }).then((data) => {; 
 
+    if(concertData !== null){
     setToDoList(concertDataArray);
-    console.log(toDoList);
+    setisLoaded(true);
+   
+    }
+  });
   };
 
   const getUserEvents = async (item) => {
+    
     await axios
       .get(
         "https://api.songkick.com/api/3.0/events/" +
@@ -66,13 +78,13 @@ function CalendarList() {
         concertDataArray.push(eventData);
       });
   };
-  useEffect(() => {
-    getUserEventIDs().catch(console.error);
-  }, []);
+
   
 
- 
-    return (<CalendarTable data={toDoList} />);
-  
+ if(!isLoaded){
+  return (<CalendarTable data={[]} itemCount={0}/>);
+ }else{
+  return (<CalendarTable data={toDoList} itemCount={itemCount}/>);
+  }
 }
 export default CalendarList;
