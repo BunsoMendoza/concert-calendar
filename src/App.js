@@ -1,5 +1,4 @@
-import React from "react";
-import ScrollToTop from "./components/ScrollToTop";
+
 import Navbar from "./components/Navbar";
 
 import ConcertsPage from "./components/Events/ConcertsPage";
@@ -21,12 +20,11 @@ function App() {
       <div className="App">
         <Banner />
         <Navbar />
-        <ScrollToTop />
+  
 
         <Routes> 
           <Route path="/" element={<ConcertsPage/>} />
           <Route path="/concerts" element={<ConcertsPage />} />
-  
           <Route path="/calendar" element={<Calendar />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

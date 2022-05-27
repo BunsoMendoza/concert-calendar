@@ -34,6 +34,7 @@ function ConcertPaginatedList(props) {
 
   useEffect(() => {
     props.onSetPageNumber(currentPage);
+    window.scrollTo(0, 0);
   }, [currentPage]);
 
   if (list.length === 0) { 
