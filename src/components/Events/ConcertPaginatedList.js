@@ -65,7 +65,7 @@ function ConcertPaginatedList(props) {
     );
     return (
       <div>
-        <Container fluid className="concert-list">
+        
           <Container className="concert-list-content">
             <div className="list-group-item" id="list-item">
               <Row>
@@ -127,7 +127,7 @@ function ConcertPaginatedList(props) {
               );
             })}
           </Container>
-        </Container>
+       
         <button onClick={() => decrementPageNumber()}>Previous</button>
         <button onClick={() => incrementPageNumber()}>Next</button>
         <h4>
