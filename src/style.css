@@ -83,7 +83,7 @@ button:focus {
   height: fit-content;
 }
 .concert-list {
-  padding: 8rem 0 2rem !important;
+  padding: 5rem 0 2rem !important;
   position: relative !important;
   background: var(--section-background-color) !important;
   color: black !important;
@@ -107,10 +107,19 @@ button:focus {
 }
 .concert-list-content {
   height: fit-content;
-  padding-bottom: 150px !important;
+  padding-bottom: 125px !important;
 }
 .list-group-item {
   border-radius: 5px;
+}
+.bottom-paginated-buttons{
+  text-align: center !important;
+}
+.top-paginated-buttons{
+text-align: right;
+
+-ms-transform: translate(-2%, -50%);
+  transform: translate(-2%, -50%);
 }
 
 /* --------- */
