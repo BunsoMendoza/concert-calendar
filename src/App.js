@@ -1,9 +1,6 @@
-
 import Navbar from "./components/Navbar";
-
 import ConcertsPage from "./components/Events/ConcertsPage";
 import Banner from "./components/Banner";
-
 import Calendar from "./components/UserCalendar/Calendar";
 import {
   BrowserRouter as Router,
@@ -20,10 +17,9 @@ function App() {
       <div className="App">
         <Banner />
         <Navbar />
-  
 
-        <Routes> 
-          <Route path="/" element={<ConcertsPage/>} />
+        <Routes>
+          <Route path="/" element={<ConcertsPage />} />
           <Route path="/concerts" element={<ConcertsPage />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="*" element={<Navigate to="/" />} />

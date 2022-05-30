@@ -10,7 +10,7 @@ let emptyData = {
 };
 
 let apiProp = {
-  apikey: "m9qVXGhOvdZmmUQs"
+  apikey: "m9qVXGhOvdZmmUQs",
 };
 
 function SearchHandling(props) {
@@ -20,11 +20,13 @@ function SearchHandling(props) {
   const [myData, setMyData] = useState(null);
   const [isLoaded, setisLoaded] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
+  const [foundLocation, setFoundLocation] = useState(false);
+
   useEffect(() => {
     setisLoaded(false);
     getUpcomingEventsByClientIP();
-    
   }, [pageNumber]);
+
   const handlePageNumberChange = (page) => {
     setPageNumber(page);
   };
@@ -32,7 +34,6 @@ function SearchHandling(props) {
   useEffect(() => {
     setisLoaded(false);
     getUpcomingEventsByClientIP();
-   
   }, [props.searchQuery, pageNumber]);
 
   const getUpcomingEventsByClientIP = async () => {
@@ -49,6 +50,7 @@ function SearchHandling(props) {
         "https://api.songkick.com/api/3.0/search/locations.json?location=clientip&apikey=" +
           apiProp.apikey
       );
+
       const metroAreaID =
         metroAreaData.data.resultsPage.results.location[0].metroArea.id;
 
@@ -71,9 +73,24 @@ function SearchHandling(props) {
             "&apikey=" +
             apiProp.apikey
         );
-        const metroAreaResponse = metroAreaData.data.resultsPage.results;
+        var metroAreaResponse = metroAreaData.data.resultsPage.results;
+   
         if (metroAreaResponse.length !== 0) {
-          const metroAreaID = metroAreaResponse.location[0].metroArea.id;
+         
+          var length = metroAreaResponse.location.length;
+          var searchIndex = 0;
+
+          while (searchIndex < length) {
+     
+            if ('state' in metroAreaResponse.location[searchIndex].metroArea) {
+              if (metroAreaResponse.location[searchIndex].metroArea.state.displayName === props.searchState) {
+                break;
+              }
+            }     
+              searchIndex++;
+          }
+
+          const metroAreaID = metroAreaResponse.location[searchIndex].metroArea.id;
           //get metro area upcoming events
           getData = await axios.get(
             "https://api.songkick.com/api/3.0/metro_areas/" +
@@ -83,7 +100,6 @@ function SearchHandling(props) {
               "&page=" +
               pageNumber
           );
-   
         }
       } else if (props.searchType === "Venue") {
         //get venue ID by string input
@@ -103,7 +119,6 @@ function SearchHandling(props) {
               "/calendar.json?apikey=" +
               apiProp.apikey
           );
-        
         }
       } else if (props.searchType === "Artist") {
         //get artist ID by string input
@@ -125,7 +140,6 @@ function SearchHandling(props) {
               "/calendar.json?apikey=" +
               apiProp.apikey
           );
-          
         }
       }
     }
