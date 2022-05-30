@@ -48,7 +48,21 @@ function CalendarTable(props) {
     ); 
     
   } else {
+    list.sort((a, b) =>
+      a.start.datetime > b.start.datetime
+        ? 1
+        : a.start.datetime === b.start.datetime
+        ? a.start.time > b.start.time
+          ? 1
+          : a.start.time === b.start.time
+          ? a.displayName > b.displayName
+            ? 1
+            : -1
+          : -1
+        : -1
+    );
     return ( 
+      
       <div>
         <Container fluid className="concert-list">
           <Container className="concert-list-content">

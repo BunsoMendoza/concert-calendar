@@ -4,6 +4,7 @@ import * as mutations from "../../graphql/mutations";
 import { API } from "aws-amplify";
 function ConcertPaginatedList(props) {
   const list = props.data.concertList;
+
   const [currentPage, setCurrentPage] = useState(props.data.currentPage);
 
   const numberOfPages = Math.ceil(props.data.totalEntries / 50);
@@ -41,7 +42,7 @@ function ConcertPaginatedList(props) {
   if (list.length === 0) {
     return (
       <div>
-        <Container fluid className="concert-list">
+        <Container fluid className="empty-concert-list">
           <Container className="concert-list-content">
             <h1> Loading...</h1>
           </Container>
@@ -49,6 +50,19 @@ function ConcertPaginatedList(props) {
       </div>
     );
   } else {
+    list.sort((a, b) =>
+      a.start.datetime > b.start.datetime
+        ? 1
+        : a.start.datetime === b.start.datetime
+        ? a.start.time > b.start.time
+          ? 1
+          : a.start.time === b.start.time
+          ? a.displayName > b.displayName
+            ? 1
+            : -1
+          : -1
+        : -1
+    );
     return (
       <div>
         <Container fluid className="concert-list">
@@ -99,7 +113,7 @@ function ConcertPaginatedList(props) {
                     <Col md="2">{item.venue.displayName}</Col>
                     <Col md="2">{item.performance}</Col>
                     <Col md="1">
-                      <a 
+                      <a
                         onClick={(e) => {
                           handleAddClick(e, item);
                         }}
