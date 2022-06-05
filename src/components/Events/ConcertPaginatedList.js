@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import * as mutations from "../../graphql/mutations";
 import { API } from "aws-amplify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function ConcertPaginatedList(props) {
   const list = props.data.concertList;
 
@@ -22,16 +25,17 @@ function ConcertPaginatedList(props) {
 
   const handleAddClick = (event, item) => {
     event.preventDefault();
-
+    
     const concertDetails = {
       name: item.displayName.split(" (")[0],
       id: item.id,
     };
+    
     const addConcert = API.graphql({
       query: mutations.createTodo,
       variables: { input: concertDetails },
       authMode: "AMAZON_COGNITO_USER_POOLS",
-    }).then(() => alert("it worked!"));
+    }).then(() => toast("Concert added!"));
   };
 
   useEffect(() => {
@@ -134,7 +138,7 @@ function ConcertPaginatedList(props) {
             );
           })}
         </Container>
-
+        <ToastContainer />
         <div className="bottom-paginate-buttons">
           <button onClick={() => decrementPageNumber()}>Previous</button>
           <button onClick={() => incrementPageNumber()}>Next</button>

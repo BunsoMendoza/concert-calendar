@@ -2,6 +2,8 @@ import React, { useEffect,useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import * as mutations from "../../graphql/mutations";
 import { API } from "aws-amplify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function CalendarTable(props) { 
   const [list, setToDoList] = useState([]);
   const [isLoaded, setisLoaded] = useState(false);
@@ -34,7 +36,7 @@ function CalendarTable(props) {
       query: mutations.deleteTodo,
       variables: { input: concertDetails },
       authMode: "AMAZON_COGNITO_USER_POOLS",
-    }).then(() => alert("deleted!"));
+    }).then(() => toast("Concert Deleted!"));
      
   }; 
  
@@ -128,6 +130,7 @@ function CalendarTable(props) {
            
           </Container>
         </Container>
+        <ToastContainer />
       </div>
     );
   }
