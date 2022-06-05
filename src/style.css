@@ -31,6 +31,9 @@ button:focus {
   box-shadow: none !important;
 }
 
+.custom-link{
+   cursor: pointer;
+  }
 /* --------- */
 /* Home section */
 /* --------- */

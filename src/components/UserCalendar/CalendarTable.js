@@ -119,6 +119,7 @@ function CalendarTable(props) {
                             handleDeleteClick(e, item);
                           }}
                           style={{ color: "blue" }}
+                          className="custom-link"
                         > 
                           Remove
                         </a>

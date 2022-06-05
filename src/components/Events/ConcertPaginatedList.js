@@ -73,8 +73,8 @@ function ConcertPaginatedList(props) {
           <h4>
             Page {currentPage} of {numberOfPages}
           </h4>
-          <button onClick={() => decrementPageNumber()}>Previous</button>
-          <button onClick={() => incrementPageNumber()}>Next</button>
+          <button  onClick={() => decrementPageNumber()}>Previous</button>
+          <button  onClick={() => incrementPageNumber()}>Next</button>
         </div>
 
         <Container className="concert-list-content">
@@ -128,6 +128,7 @@ function ConcertPaginatedList(props) {
                       onClick={(e) => {
                         handleAddClick(e, item);
                       }}
+                      className="custom-link"
                       style={{ color: "blue" }}
                     >
                       Add
