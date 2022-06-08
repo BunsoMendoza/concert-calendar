@@ -1,7 +1,6 @@
-import Navbar from "./components/Navbar";
-import ConcertsPage from "./components/Events/ConcertsPage";
-import Banner from "./components/Banner";
-import Calendar from "./components/UserCalendar/Calendar";
+import Navbar from "./components/navbar/Navbar";
+import ConcertsPage from "./components/concerts/ConcertsPage";
+import Calendar from "./components/calendar/Calendar";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,9 +14,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Banner />
         <Navbar />
-
         <Routes>
           <Route path="/" element={<ConcertsPage />} />
           <Route path="/concerts" element={<ConcertsPage />} />

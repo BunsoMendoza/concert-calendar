@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-
-import Footer from "../Footer";
+import Footer from "../footer/Footer";
 import CalendarList from "./CalendarList";
 
 
 function Calendar() {
   
-
-
-
   return (
     <div>
       <Container fluid className="calendar-page">

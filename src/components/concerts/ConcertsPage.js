@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import SearchHandling from "./SearchHandling";
-import Footer from "../Footer";
+import Footer from "../footer/Footer";
 import Searchbar from "./Searchbar";
 import React, { useState, useRef } from "react";
 

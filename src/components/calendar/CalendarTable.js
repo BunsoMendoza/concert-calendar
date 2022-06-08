@@ -118,10 +118,10 @@ function CalendarTable(props) {
                           onClick={(e) => {
                             handleDeleteClick(e, item);
                           }}
-                          style={{ color: "blue" }}
+                          style={{ color: "red" }}
                           className="custom-link"
                         > 
-                          Remove
+                          -
                         </a>
                       </Col>
                     </Row>
