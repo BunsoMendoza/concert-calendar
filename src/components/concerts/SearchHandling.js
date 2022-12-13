@@ -8,7 +8,7 @@ let emptyData = {
   totalEntries: 0,
   currentPage: 1,
 };
-
+//SEATGEEK API : NTUwMDgwMXwxNjcwNjQ4NjQ0Ljc2MTE4Njg
 let apiProp = {
   apikey: "m9qVXGhOvdZmmUQs",
 };
