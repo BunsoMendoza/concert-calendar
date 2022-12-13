@@ -1,6 +1,6 @@
-import Navbar from "./components/navbar/Navbar";
+//import Navbar from "./components/navbar/Navbar";
 import ConcertsPage from "./components/concerts/ConcertsPage";
-import Calendar from "./components/calendar/Calendar";
+//import Calendar from "./components/calendar/Calendar";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,18 +8,18 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./style.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<ConcertsPage />} />
-          <Route path="/concerts" element={<ConcertsPage />} />
+          {/* <Route path="/concerts" element={<ConcertsPage />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </div>
     </Router>
